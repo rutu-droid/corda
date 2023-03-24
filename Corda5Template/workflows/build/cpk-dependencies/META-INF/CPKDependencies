@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cpkDependencies xmlns="urn:corda-cpk">
+    <cpkDependency>
+        <name>net.corda.flows</name>
+        <version>5.0.0.DevPreview-10</version>
+        <type>corda-api</type>
+        <signers>
+            <signer algorithm="SHA-256">qlnYKfLKj931q+pA2BX5N+PlTlcrZbk7XCFq5llOfWs=</signer>
+        </signers>
+    </cpkDependency>
+    <cpkDependency>
+        <name>com.r3.devrel.corda5-template-contracts</name>
+        <version>1.0.0.SNAPSHOT</version>
+        <signers>
+            <signer algorithm="SHA-256">qlnYKfLKj931q+pA2BX5N+PlTlcrZbk7XCFq5llOfWs=</signer>
+        </signers>
+    </cpkDependency>
+</cpkDependencies>

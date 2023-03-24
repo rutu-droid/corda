@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="net.corda.c5template.flows.ExampleUnitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-21T08:01:20" hostname="tornadus" time="15.373">
+  <properties/>
+  <testcase name="flow signs state()" classname="net.corda.c5template.flows.ExampleUnitTest" time="15.373"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+]]></system-err>
+</testsuite>

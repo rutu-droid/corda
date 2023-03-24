@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dependencyConstraints xmlns="urn:corda-cpk">
+    <dependencyConstraint>
+        <fileName>gson-2.8.6.jar</fileName>
+        <hash algorithm="SHA-256">yPtIOQVNKAswM/gA0fWpfeLwKOuLoutFitKH5Tbz8l8=</hash>
+    </dependencyConstraint>
+</dependencyConstraints>

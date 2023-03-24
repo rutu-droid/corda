@@ -1,0 +1,28 @@
+nodes:
+  KBA:
+    debug: true
+    x500: "C=US, L=Los Angeles, O=KBA, OU=LLC"
+    users:
+      user1:
+        password: test
+      angel:
+        password: password
+        permissions: [ "ALL" ]
+  Bank:
+    x500: "C=GB, L=London, O=Bank, OU=INC"
+    users:
+      user1:
+        password: test
+      londoner:
+        password: password
+        permissions: [ "ALL" ]
+  notary:
+    notary: true
+#  PartyC:
+#    x500: "C=US, L=New York, O=PartyC, OU=LLC"
+#    users:
+#      user1:
+#        password: test
+#      newyorker:
+#        password: password
+#        permissions: [ "ALL" ]

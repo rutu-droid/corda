@@ -1,0 +1,24 @@
+Cordapp-Contract-Name=Corda5 Cordapp Template - Contracts
+Bundle-License=Unknown
+Sealed=true
+Cordapp-Contract-Licence=Unknown
+Cordapp-Contract-Version=1
+Bundle-Name=Corda5 Cordapp Template - Contracts
+Min-Platform-Version=999
+Bundle-Vendor=R3
+Target-Platform-Version=1000
+Bundle-SymbolicName=com.r3.devrel.corda5-template-contracts
+Cordapp-Contract-Vendor=R3
+Cordapp-Built-Platform-Version=999
+Corda-CheckpointCustomSerializer-Classes=${classes;IMPLEMENTS;net.corda.v5.serialization.CheckpointCustomSerializer;CONCRETE;PUBLIC;STATIC;NAMED;\!*.[\\d]+*}
+Corda-Flow-Classes=${classes;IMPLEMENTS;net.corda.v5.application.flows.Flow;CONCRETE;PUBLIC;STATIC;NAMED;\!*.[\\d]+*}
+Corda-MappedSchema-Classes=${classes;EXTENDS;net.corda.v5.persistence.MappedSchema;CONCRETE;PUBLIC;STATIC;NAMED;\!*.[\\d]+*}
+Corda-SerializationCustomSerializer-Classes=${classes;IMPLEMENTS;net.corda.v5.serialization.SerializationCustomSerializer;CONCRETE;PUBLIC;STATIC;NAMED;\!*.[\\d]+*}
+Import-Package=org.hibernate.annotations;resolution\:\=dynamic;version\=\!,org.hibernate.proxy;resolution\:\=dynamic;version\=\!,javassist.util.proxy;resolution\:\=dynamic;version\=\!,net.corda.v5.*;version\='${range;[\=,+);${@}}',*
+Corda-StateAndRefPostProcessor-Classes=${classes;IMPLEMENTS;net.corda.v5.ledger.services.vault.StateAndRefPostProcessor;CONCRETE;PUBLIC;STATIC;NAMED;\!*.[\\d]+*}
+Corda-Service-Classes=${classes;IMPLEMENTS;net.corda.v5.application.services.CordaService;CONCRETE;PUBLIC;STATIC;NAMED;\!*.[\\d]+*}
+Corda-NotaryService-Classes=${classes;EXTENDS;net.corda.v5.ledger.notary.NotaryService;CONCRETE;PUBLIC;STATIC;NAMED;\!*.[\\d]+*}
+Corda-SerializationWhitelist-Classes=${classes;IMPLEMENTS;net.corda.v5.serialization.SerializationWhitelist;CONCRETE;PUBLIC;STATIC;NAMED;\!*.[\\d]+*}
+Corda-CustomQueryPostProcessor-Classes=${classes;IMPLEMENTS;net.corda.v5.application.services.persistence.CustomQueryPostProcessor;CONCRETE;PUBLIC;STATIC;NAMED;\!*.[\\d]+*}
+-exportcontents=net.corda.c5template.contracts,net.corda.c5template.states
+Corda-Contract-Classes=${classes;IMPLEMENTS;net.corda.v5.ledger.contracts.Contract;CONCRETE;PUBLIC;STATIC;NAMED;\!*.[\\d]+*}

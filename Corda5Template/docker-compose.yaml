@@ -1,0 +1,120 @@
+version: '3'
+services:
+  KBA-node:
+    container_name: c5cordapp-template-KBA
+    image: corda/corda-dev:latest
+    command:
+    - corda-dev-network-agent
+    - node
+    - c5cordapp-template-KBA
+    - http://c5cordapp-template-bootstrapper:8080/
+    networks:
+    - c5cordapp-template
+    depends_on:
+    - bootstrapper
+    ports:
+    - 12111:10000
+    - 12112:8888
+    - 12113:9000
+    - 12114:12114
+    labels:
+      type: corda
+      x500: C=US, L=Los Angeles, O=KBA, OU=LLC
+    environment:
+      CORDA_DEBUG_PORT: '12114'
+    volumes:
+    - source: /home/richierick/.corda/c5cordapp-template/docker_compose/tmp/KBA
+      target: /opt/nodes/
+      type: bind
+    user: 1000:1000
+  Bank-node:
+    container_name: c5cordapp-template-Bank
+    image: corda/corda-dev:latest
+    command:
+    - corda-dev-network-agent
+    - node
+    - c5cordapp-template-Bank
+    - http://c5cordapp-template-bootstrapper:8080/
+    networks:
+    - c5cordapp-template
+    depends_on:
+    - bootstrapper
+    ports:
+    - 12115:10000
+    - 12116:8888
+    - 12117:9000
+    labels:
+      type: corda
+      x500: C=GB, L=London, O=Bank, OU=INC
+    environment: &id001 {
+      }
+    volumes:
+    - source: /home/richierick/.corda/c5cordapp-template/docker_compose/tmp/Bank
+      target: /opt/nodes/
+      type: bind
+    user: 1000:1000
+  notary-node:
+    container_name: c5cordapp-template-notary
+    image: corda/corda-dev:latest
+    command:
+    - corda-dev-network-agent
+    - node
+    - c5cordapp-template-notary
+    - http://c5cordapp-template-bootstrapper:8080/
+    networks:
+    - c5cordapp-template
+    depends_on:
+    - bootstrapper
+    ports:
+    - 12118:10000
+    - 12119:8888
+    - 12120:9000
+    labels:
+      type: corda
+      x500: O=notary, L=London, C=GB
+      notary: 'true'
+    environment: *id001
+    volumes:
+    - source: /home/richierick/.corda/c5cordapp-template/docker_compose/tmp/notary
+      target: /opt/nodes/
+      type: bind
+    user: 1000:1000
+  bootstrapper:
+    container_name: c5cordapp-template-bootstrapper
+    image: corda/corda-dev:latest
+    networks:
+    - c5cordapp-template
+    command:
+    - python3
+    - -u
+    - scaffold.py
+    - --node
+    - c5cordapp-template-KBA
+    - |-
+      {"legal_name": "C=US, L=Los Angeles, O=KBA, OU=LLC", "rpcUsers": [{"user": "user1",
+            "password": "test", "permissions": ["ALL"]}, {"user": "angel", "password": "password",
+            "permissions": ["ALL"]}]}
+    - --node
+    - c5cordapp-template-Bank
+    - |-
+      {"legal_name": "C=GB, L=London, O=Bank, OU=INC", "rpcUsers": [{"user": "user1", "password": "test",
+            "permissions": ["ALL"]}, {"user": "londoner", "password": "password", "permissions": [
+              "ALL"]}]}
+    - --notary
+    - c5cordapp-template-notary
+    - |-
+      {"legal_name": "O=notary, L=London, C=GB", "rpcUsers": [{"user": "user1", "password": "test",
+            "permissions": ["ALL"]}]}
+    environment:
+      NODE_BOOTSTRAPPER_TIMEOUT: '20'
+    labels:
+      type: bootstrapper
+    volumes:
+    - source: /home/richierick/.corda/c5cordapp-template/docker_compose/tmp/bootstrapper
+      target: /opt/nodes/
+      type: bind
+    user: 1000:1000
+networks:
+  c5cordapp-template:
+    name: c5cordapp-template
+
